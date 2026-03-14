@@ -45,7 +45,13 @@ Plans:
   1. `CompanyRecord` dataclass exists with all required fields (url, company_name, email_found, generated_message, status, resend_message_id, timestamp) and all valid status values defined
   2. `config.py` loads `profile.toml`, validates all required fields, and raises a clear error (not a KeyError) when a field is missing
   3. The stub CLI accepts `--input <csv>` and exits cleanly after loading and validating config, before any pipeline logic runs
-**Plans**: TBD
+**Plans**: 4 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Wave 0 test scaffolds: test_models.py, test_cli.py, and validate_profile stubs in test_config.py
+- [ ] 02-02-PLAN.md — CompanyRecord dataclass and Status enum in models.py
+- [ ] 02-03-PLAN.md — validate_profile() added to config.py
+- [ ] 02-04-PLAN.md — Typer CLI with --input option and startup validation in __main__.py
 
 ### Phase 3: Web Scraping
 **Goal**: Given a company URL, the tool can reliably discover a contact email or report a clear reason why none was found
@@ -100,7 +106,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Scaffolding | 3/3 | Complete   | 2026-03-14 |
-| 2. Data Model and Config | 0/TBD | Not started | - |
+| 2. Data Model and Config | 0/4 | Not started | - |
 | 3. Web Scraping | 0/TBD | Not started | - |
 | 4. LLM Generation | 0/TBD | Not started | - |
 | 5. Sending and Logging | 0/TBD | Not started | - |
