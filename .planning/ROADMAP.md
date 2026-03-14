@@ -12,7 +12,7 @@ job-mailer is built in six phases that follow the natural dependency order of it
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Scaffolding** - Secure project skeleton with secrets management, DNS auth docs, and developer profile schema
+- [x] **Phase 1: Scaffolding** - Secure project skeleton with secrets management, DNS auth docs, and developer profile schema (completed 2026-03-14)
 - [ ] **Phase 2: Data Model and Config** - CompanyRecord dataclass, ProfileConfig loader, and stub CLI that validates config on startup
 - [ ] **Phase 3: Web Scraping** - Email discovery via footer/contact/about fallback chain with company name inference
 - [ ] **Phase 4: LLM Generation** - Groq-powered personalized email generation with post-generation validation
@@ -99,7 +99,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Scaffolding | 2/3 | In Progress|  |
+| 1. Scaffolding | 3/3 | Complete   | 2026-03-14 |
 | 2. Data Model and Config | 0/TBD | Not started | - |
 | 3. Web Scraping | 0/TBD | Not started | - |
 | 4. LLM Generation | 0/TBD | Not started | - |
