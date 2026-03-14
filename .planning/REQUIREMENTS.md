@@ -13,7 +13,7 @@
 
 ### Input
 
-- [ ] **INPUT-01**: Tool reads company URLs from a single-column CSV file specified via CLI argument
+- [x] **INPUT-01**: Tool reads company URLs from a single-column CSV file specified via CLI argument
 
 ### Discovery
 
@@ -73,7 +73,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INFRA-01 | Phase 1 | Complete |
 | INFRA-02 | Phase 1 | Complete |
 | INFRA-03 | Phase 1 | Complete |
-| INPUT-01 | Phase 2 | Pending |
+| INPUT-01 | Phase 2 | Complete |
 | DISC-01 | Phase 3 | Pending |
 | DISC-02 | Phase 3 | Pending |
 | DISC-03 | Phase 3 | Pending |
