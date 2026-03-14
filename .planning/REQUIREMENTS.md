@@ -9,7 +9,7 @@
 
 - [ ] **INFRA-01**: Project includes README documentation for required DNS auth setup (SPF/DKIM/DMARC) before any live sends
 - [x] **INFRA-02**: API keys (GROQ_API_KEY, RESEND_API_KEY, RESEND_FROM_EMAIL) are loaded from .env via python-dotenv; .env is gitignored from project setup
-- [ ] **INFRA-03**: profile.toml has a locked schema with a profile.example.toml committed to the repo
+- [x] **INFRA-03**: profile.toml has a locked schema with a profile.example.toml committed to the repo
 
 ### Input
 
@@ -72,7 +72,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 |-------------|-------|--------|
 | INFRA-01 | Phase 1 | Pending |
 | INFRA-02 | Phase 1 | Complete |
-| INFRA-03 | Phase 1 | Pending |
+| INFRA-03 | Phase 1 | Complete |
 | INPUT-01 | Phase 2 | Pending |
 | DISC-01 | Phase 3 | Pending |
 | DISC-02 | Phase 3 | Pending |
