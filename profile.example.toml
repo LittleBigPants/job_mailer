@@ -1,0 +1,22 @@
+# profile.example.toml
+# Copy this file to profile.toml and fill in your details.
+# profile.toml is gitignored — never commit your real profile.
+
+[developer]
+name = "Jane Smith"                    # string — your full name for email signatures
+title = "Senior Software Engineer"     # string — your current/target title
+location = "Berlin, Germany"           # string — city, country
+years_experience = 8                   # integer — years of professional experience
+
+[developer.contact]
+email = "jane@example.com"             # string — your reply-to email
+github = "https://github.com/jsmith"  # string — GitHub profile URL
+linkedin = ""                          # string — LinkedIn URL (optional, leave blank)
+portfolio = ""                         # string — portfolio URL (optional)
+
+[developer.skills]
+primary = ["Python", "TypeScript", "Go"]  # list[string] — top 3-5 languages/frameworks
+specialisation = "backend APIs and data pipelines"  # string — one-line summary
+
+[send]
+delay_seconds = 2   # integer — seconds between sends (minimum 1; default 2)
