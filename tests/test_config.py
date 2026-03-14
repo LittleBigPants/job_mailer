@@ -56,3 +56,32 @@ def test_load_profile_missing_file(tmp_path):
     with pytest.raises(SystemExit) as exc_info:
         load_profile(missing_path)
     assert "profile" in str(exc_info.value).lower()
+
+
+# ---------------------------------------------------------------------------
+# validate_profile() tests — added Phase 2
+# ---------------------------------------------------------------------------
+
+
+def test_validate_profile_missing_field():
+    """validate_profile({}) raises SystemExit; message names a missing field."""
+    from job_mailer.config import validate_profile  # noqa: PLC0415
+    with pytest.raises(SystemExit) as exc_info:
+        validate_profile({})
+    # The error message must contain a dotted field path (e.g. "developer.name")
+    assert "developer" in str(exc_info.value)
+
+
+def test_validate_profile_all_present():
+    """validate_profile() returns None when all required fields are present."""
+    from job_mailer.config import validate_profile  # noqa: PLC0415
+    valid_profile = {
+        "developer": {
+            "name": "A",
+            "title": "B",
+            "contact": {"email": "a@b.com"},
+            "skills": {"primary": "Python", "specialisation": "backend"},
+        }
+    }
+    result = validate_profile(valid_profile)
+    assert result is None
