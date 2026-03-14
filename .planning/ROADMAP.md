@@ -30,7 +30,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. `profile.example.toml` is committed to the repo and documents every required field with types and example values
   3. The README contains a DNS setup section (SPF/DKIM/DMARC) that a developer can follow before any live send
   4. `python-dotenv` loads `GROQ_API_KEY`, `RESEND_API_KEY`, and `RESEND_FROM_EMAIL` from `.env` at startup; missing keys produce a clear error, not a traceback
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Project skeleton: pyproject.toml, .gitignore, src/job_mailer package, .env.example
+- [ ] 01-02-PLAN.md — Config module + tests: check_env() and load_profile() via TDD
+- [ ] 01-03-PLAN.md — Profile schema + DNS docs: profile.example.toml and README DNS setup section
 
 ### Phase 2: Data Model and Config
 **Goal**: The shared data contract and config loading are in place, making every downstream stage independently testable before any external service is called
@@ -94,7 +99,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Scaffolding | 0/TBD | Not started | - |
+| 1. Scaffolding | 0/3 | Not started | - |
 | 2. Data Model and Config | 0/TBD | Not started | - |
 | 3. Web Scraping | 0/TBD | Not started | - |
 | 4. LLM Generation | 0/TBD | Not started | - |
