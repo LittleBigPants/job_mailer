@@ -35,3 +35,33 @@ def load_profile(path: Path = _PROFILE_PATH) -> dict:
         )
     with open(path, "rb") as f:
         return tomllib.load(f)
+
+
+_REQUIRED_PROFILE_FIELDS: list[tuple[str, ...]] = [
+    ("developer", "name"),
+    ("developer", "title"),
+    ("developer", "contact", "email"),
+    ("developer", "skills", "primary"),
+    ("developer", "skills", "specialisation"),
+]
+
+
+def validate_profile(profile: dict) -> None:
+    """Raise SystemExit with actionable message if required profile.toml fields are missing.
+
+    Always call this immediately after load_profile() before accessing any profile keys.
+    """
+    missing = []
+    for path in _REQUIRED_PROFILE_FIELDS:
+        node = profile
+        for key in path:
+            if not isinstance(node, dict) or key not in node:
+                missing.append(".".join(path))
+                break
+            node = node[key]
+    if missing:
+        fields_list = "\n  ".join(missing)
+        sys.exit(
+            f"Error: profile.toml is missing required fields:\n  {fields_list}\n"
+            f"\nSee profile.example.toml for all required fields."
+        )
