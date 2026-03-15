@@ -55,7 +55,6 @@ def test_status_enum_values():
         "generation_failed",
         "send_failed",
         "rate_limited",
-        "skipped",
         "scrape_failed",
         "dry_run",
     }

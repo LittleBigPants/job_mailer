@@ -15,7 +15,6 @@ class Status(str, enum.Enum):
     GENERATION_FAILED = "generation_failed"
     SEND_FAILED = "send_failed"
     RATE_LIMITED = "rate_limited"
-    SKIPPED = "skipped"
     SCRAPE_FAILED = "scrape_failed"
     DRY_RUN = "dry_run"
 

@@ -18,3 +18,4 @@ build/
 
 # Runtime artifacts
 *.log
+outreach_log.csv

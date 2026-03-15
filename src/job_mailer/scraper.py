@@ -5,6 +5,7 @@ import re
 from urllib.parse import urljoin, urlparse
 
 import httpx
+import typer
 from bs4 import BeautifulSoup
 
 from job_mailer.models import CompanyRecord, Status
@@ -131,7 +132,7 @@ def scrape_company(url: str) -> CompanyRecord:
             try:
                 resp = client.get(page_url)
             except (httpx.TimeoutException, httpx.RequestError) as exc:
-                print(f"Warning: failed to fetch {page_url}: {exc}")
+                typer.echo(f"Warning: failed to fetch {page_url}: {exc}", err=True)
                 continue
 
             if resp.status_code != 200:

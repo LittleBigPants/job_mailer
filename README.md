@@ -134,7 +134,7 @@ job-mailer --input companies.csv --dry-run
 job-mailer --input companies.csv --delay 5
 ```
 
-The `companies.csv` file requires a `url` column. Additional columns (company name, notes) are passed through to the prompt template.
+The `companies.csv` file is a single-column CSV with one URL per row. No header is required, but a `url` header row is skipped automatically if present.
 
 ---
 
