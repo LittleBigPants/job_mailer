@@ -6,6 +6,7 @@ from pathlib import Path
 import typer
 
 from job_mailer.config import check_env, load_profile, validate_profile
+from job_mailer.generator import generate_email
 from job_mailer.scraper import scrape_company
 
 app = typer.Typer()
@@ -38,8 +39,13 @@ def main(
                 continue  # skip header
             try:
                 record = scrape_company(url)
-                email_display = record.email_found or "no email"
-                typer.echo(f"  {record.company_name} — {email_display} — {record.status.value}")
+                if record.email_found:
+                    record = generate_email(record, profile)
+                if record.generated_message:
+                    wc = len(record.generated_message.split())
+                    typer.echo(f"  {record.company_name} — {record.email_found} — {wc} words — {record.status.value}")
+                else:
+                    typer.echo(f"  {record.company_name} — {record.email_found or 'no email'} — {record.status.value}")
             except Exception as exc:
                 typer.echo(f"  WARNING: failed to scrape {url}: {exc}", err=True)
     typer.echo("Done.")
