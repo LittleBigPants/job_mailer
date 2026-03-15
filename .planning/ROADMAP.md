@@ -118,6 +118,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 1. Scaffolding | 3/3 | Complete   | 2026-03-14 |
 | 2. Data Model and Config | 4/4 | Complete   | 2026-03-14 |
 | 3. Web Scraping | 3/3 | Complete   | 2026-03-15 |
-| 4. LLM Generation | 1/3 | In Progress|  |
+| 4. LLM Generation | 2/3 | In Progress|  |
 | 5. Sending and Logging | 0/TBD | Not started | - |
 | 6. Orchestration and CLI | 0/TBD | Not started | - |
