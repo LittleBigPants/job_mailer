@@ -33,7 +33,7 @@
 
 - [x] **SEND-01**: Sends email via Resend API using credentials from .env
 - [x] **SEND-02**: Inspects Resend response object for named error types (429 rate limit, daily_quota_exceeded, invalid_email) — not just HTTP status code
-- [ ] **SEND-03**: Configurable delay between sends (default: 2s; configurable via profile.toml or --delay CLI flag)
+- [x] **SEND-03**: Configurable delay between sends (default: 2s; configurable via profile.toml or --delay CLI flag)
 - [ ] **SEND-04**: --dry-run flag causes the tool to scrape and generate messages but never call the Resend API
 
 ### Logging
@@ -84,7 +84,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | GEN-04 | Phase 4 | Complete |
 | SEND-01 | Phase 5 | Complete |
 | SEND-02 | Phase 5 | Complete |
-| SEND-03 | Phase 5 | Pending |
+| SEND-03 | Phase 5 | Complete |
 | SEND-04 | Phase 6 | Pending |
 | LOG-01 | Phase 5 | Complete |
 | LOG-02 | Phase 5 | Complete |
