@@ -17,10 +17,10 @@
 
 ### Discovery
 
-- [ ] **DISC-01**: Scraper extracts contact email from homepage via mailto: link parsing and regex pattern matching on full page text
-- [ ] **DISC-02**: If no email found on homepage, falls back to /contact page using same extraction logic
-- [ ] **DISC-03**: If no email found on /contact, falls back to /about page using same extraction logic
-- [ ] **DISC-04**: If no email found after all three pages, logs status as 'no_email_found' and continues to next company without stopping the run
+- [x] **DISC-01**: Scraper extracts contact email from homepage via mailto: link parsing and regex pattern matching on full page text
+- [x] **DISC-02**: If no email found on homepage, falls back to /contact page using same extraction logic
+- [x] **DISC-03**: If no email found on /contact, falls back to /about page using same extraction logic
+- [x] **DISC-04**: If no email found after all three pages, logs status as 'no_email_found' and continues to next company without stopping the run
 
 ### Generation
 
@@ -74,10 +74,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INFRA-02 | Phase 1 | Complete |
 | INFRA-03 | Phase 1 | Complete |
 | INPUT-01 | Phase 2 | Complete |
-| DISC-01 | Phase 3 | Pending |
-| DISC-02 | Phase 3 | Pending |
-| DISC-03 | Phase 3 | Pending |
-| DISC-04 | Phase 3 | Pending |
+| DISC-01 | Phase 3 | Complete |
+| DISC-02 | Phase 3 | Complete |
+| DISC-03 | Phase 3 | Complete |
+| DISC-04 | Phase 3 | Complete |
 | GEN-01 | Phase 4 | Pending |
 | GEN-02 | Phase 4 | Pending |
 | GEN-03 | Phase 4 | Pending |
