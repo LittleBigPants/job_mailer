@@ -6,14 +6,14 @@ current_phase: 1
 current_phase_name: Scaffolding
 current_plan: 3
 status: executing
-stopped_at: Completed 05-sending-and-logging/05-01-PLAN.md
-last_updated: "2026-03-15T11:05:55.059Z"
+stopped_at: Completed 05-sending-and-logging/05-02-PLAN.md
+last_updated: "2026-03-15T11:09:32.685Z"
 last_activity: 2026-03-15
 progress:
   total_phases: 6
   completed_phases: 4
   total_plans: 16
-  completed_plans: 14
+  completed_plans: 15
   percent: 0
 ---
 
@@ -70,6 +70,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 04-llm-generation P02 | 2min | 1 tasks | 1 files |
 | Phase 04-llm-generation P03 | 2min | 1 tasks | 2 files |
 | Phase 05-sending-and-logging P01 | 8min | 3 tasks | 4 files |
+| Phase 05-sending-and-logging P02 | 2min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -116,6 +117,8 @@ Recent decisions affecting current work:
 - [Phase 04-llm-generation]: Echo branches on record.generated_message presence (not record.status) — status alone is ambiguous between skipped and failed generation
 - [Phase 05-sending-and-logging]: Import send_email/log_record inside each test function body — avoids collection error while maintaining per-test RED state, consistent with Phase 02 pattern
 - [Phase 05-sending-and-logging]: RateLimitError instantiated via __new__ plus manual attribute injection (error_type, message, code) — constructor signature unknown; bypasses it safely for test purposes
+- [Phase 05-sending-and-logging]: Use os.environ.get() for RESEND_API_KEY/RESEND_FROM_EMAIL inside send_email() — consistent with generator.py; tests mock resend.Emails.send directly so env vars are never read during test runs
+- [Phase 05-sending-and-logging]: CSV header guard checked via Path.exists() before file open in logger.py — prevents duplicate headers without requiring stat after open
 
 ### Pending Todos
 
@@ -128,6 +131,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-15T11:05:55.057Z
-Stopped at: Completed 05-sending-and-logging/05-01-PLAN.md
+Last session: 2026-03-15T11:09:32.683Z
+Stopped at: Completed 05-sending-and-logging/05-02-PLAN.md
 Resume file: None
