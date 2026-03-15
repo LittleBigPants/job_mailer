@@ -79,7 +79,12 @@ Plans:
   2. A message containing `[bracket]` placeholders is rejected on first validation and retried; if the retry also fails, the company is logged as `generation_failed` and skipped
   3. A message matching a cliché opener from the deny-list ("I hope this finds you", "quick question", "synergy", "touch base", "circle back") is rejected and retried once before the company is skipped
   4. The Groq model name is driven by a config key so it can be changed without modifying code
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — Wave 0 TDD scaffold: test_generator.py failing stubs, profile.example.toml [generation] section
+- [ ] 04-02-PLAN.md — generator.py implementation: generate_email() with Groq call, validation, retry logic
+- [ ] 04-03-PLAN.md — CLI integration: wire generate_email() into __main__.py, add CLI integration test
 
 ### Phase 5: Sending and Logging
 **Goal**: The tool can send an email via Resend and immediately write a complete log record — whether the send succeeded, failed, or hit a rate limit
@@ -113,6 +118,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 1. Scaffolding | 3/3 | Complete   | 2026-03-14 |
 | 2. Data Model and Config | 4/4 | Complete   | 2026-03-14 |
 | 3. Web Scraping | 3/3 | Complete   | 2026-03-15 |
-| 4. LLM Generation | 0/TBD | Not started | - |
+| 4. LLM Generation | 0/3 | Not started | - |
 | 5. Sending and Logging | 0/TBD | Not started | - |
 | 6. Orchestration and CLI | 0/TBD | Not started | - |
