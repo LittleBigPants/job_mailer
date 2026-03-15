@@ -43,7 +43,7 @@ def test_cli_missing_input_flag():
 
 
 def test_cli_runs_scraper_per_url(tmp_path, monkeypatch):
-    """CLI calls scrape_company per URL row and prints a summary line per company."""
+    """CLI calls scrape_company per URL row and processes each company."""
     monkeypatch.setenv("GROQ_API_KEY", "gsk_test")
     monkeypatch.setenv("RESEND_API_KEY", "re_test")
     monkeypatch.setenv("RESEND_FROM_EMAIL", "test@example.com")
@@ -55,10 +55,18 @@ def test_cli_runs_scraper_per_url(tmp_path, monkeypatch):
         url="https://stripe.com",
         company_name="Stripe",
         email_found="jobs@stripe.com",
-        status=Status.PENDING,
+        generated_message="Hello, this is a test email.",
+        status=Status.SENT,
+        resend_message_id="re_test",
     )
 
-    with patch("job_mailer.__main__.scrape_company", return_value=mock_record) as mock_scrape:
+    with (
+        patch("job_mailer.__main__.scrape_company", return_value=mock_record) as mock_scrape,
+        patch("job_mailer.__main__.generate_email", return_value=mock_record),
+        patch("job_mailer.__main__.send_email", return_value=mock_record),
+        patch("job_mailer.__main__.log_record"),
+        patch("job_mailer.__main__.time"),
+    ):
         result = runner.invoke(app, ["--input", str(csv_file)])
 
     assert result.exit_code == 0
@@ -99,11 +107,28 @@ def test_cli_calls_generate_email_after_scrape(tmp_path, monkeypatch):
     )
     minimal_profile = {"developer": {"name": "Test Dev"}}
 
-    with patch("job_mailer.__main__.check_env"), \
-         patch("job_mailer.__main__.load_profile", return_value=minimal_profile), \
-         patch("job_mailer.__main__.validate_profile"), \
-         patch("job_mailer.__main__.scrape_company", return_value=scrape_record), \
-         patch("job_mailer.__main__.generate_email", return_value=generated_record) as mock_gen:
+    sent_record = CompanyRecord(
+        url="https://stripe.com",
+        company_name="Stripe",
+        email_found="jobs@stripe.com",
+        generated_message=(
+            "Hello this is a test message with enough words here to pass "
+            "the word count validation easily yes it is."
+        ),
+        status=Status.SENT,
+        resend_message_id="re_test123",
+    )
+
+    with (
+        patch("job_mailer.__main__.check_env"),
+        patch("job_mailer.__main__.load_profile", return_value=minimal_profile),
+        patch("job_mailer.__main__.validate_profile"),
+        patch("job_mailer.__main__.scrape_company", return_value=scrape_record),
+        patch("job_mailer.__main__.generate_email", return_value=generated_record) as mock_gen,
+        patch("job_mailer.__main__.send_email", return_value=sent_record),
+        patch("job_mailer.__main__.log_record"),
+        patch("job_mailer.__main__.time"),
+    ):
         result = runner.invoke(app, ["--input", str(csv_file)])
 
     assert result.exit_code == 0
