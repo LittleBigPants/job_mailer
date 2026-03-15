@@ -1,5 +1,7 @@
-"""CLI tests for job_mailer — Phase 2 + Phase 3 integration tests."""
+"""CLI tests for job_mailer — Phase 2 + Phase 3 + Phase 4 integration tests."""
 import os
+import tempfile
+from pathlib import Path
 from unittest.mock import patch, MagicMock
 import pytest
 from typer.testing import CliRunner
@@ -63,3 +65,49 @@ def test_cli_runs_scraper_per_url(tmp_path, monkeypatch):
     assert "Stripe" in result.output
     assert "jobs@stripe.com" in result.output
     mock_scrape.assert_called_once_with("https://stripe.com")
+
+
+# ---------------------------------------------------------------------------
+# Phase 4: generator integration tests
+# ---------------------------------------------------------------------------
+
+
+def test_cli_calls_generate_email_after_scrape(tmp_path, monkeypatch):
+    """CLI calls generate_email() after a successful scrape when email_found is set."""
+    monkeypatch.setenv("GROQ_API_KEY", "gsk_test")
+    monkeypatch.setenv("RESEND_API_KEY", "re_test")
+    monkeypatch.setenv("RESEND_FROM_EMAIL", "test@example.com")
+
+    csv_file = tmp_path / "companies.csv"
+    csv_file.write_text("url\nhttps://stripe.com\n")
+
+    scrape_record = CompanyRecord(
+        url="https://stripe.com",
+        company_name="Stripe",
+        email_found="jobs@stripe.com",
+        status=Status.PENDING,
+    )
+    generated_record = CompanyRecord(
+        url="https://stripe.com",
+        company_name="Stripe",
+        email_found="jobs@stripe.com",
+        generated_message=(
+            "Hello this is a test message with enough words here to pass "
+            "the word count validation easily yes it is."
+        ),
+        status=Status.PENDING,
+    )
+    minimal_profile = {"developer": {"name": "Test Dev"}}
+
+    with patch("job_mailer.__main__.check_env"), \
+         patch("job_mailer.__main__.load_profile", return_value=minimal_profile), \
+         patch("job_mailer.__main__.validate_profile"), \
+         patch("job_mailer.__main__.scrape_company", return_value=scrape_record), \
+         patch("job_mailer.__main__.generate_email", return_value=generated_record) as mock_gen:
+        result = runner.invoke(app, ["--input", str(csv_file)])
+
+    assert result.exit_code == 0
+    assert mock_gen.called
+    # First positional arg to generate_email should be the CompanyRecord
+    call_args = mock_gen.call_args
+    assert call_args[0][0] is scrape_record
