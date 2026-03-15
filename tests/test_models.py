@@ -55,6 +55,7 @@ def test_status_enum_values():
         "generation_failed",
         "send_failed",
         "skipped",
+        "scrape_failed",
     }
     actual_values = {member.value for member in Status}
     assert actual_values == expected_values

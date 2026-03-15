@@ -15,6 +15,7 @@ class Status(str, enum.Enum):
     GENERATION_FAILED = "generation_failed"
     SEND_FAILED = "send_failed"
     SKIPPED = "skipped"
+    SCRAPE_FAILED = "scrape_failed"
 
 
 @dataclass
