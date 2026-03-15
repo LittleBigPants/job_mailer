@@ -31,15 +31,15 @@
 
 ### Sending
 
-- [ ] **SEND-01**: Sends email via Resend API using credentials from .env
-- [ ] **SEND-02**: Inspects Resend response object for named error types (429 rate limit, daily_quota_exceeded, invalid_email) — not just HTTP status code
+- [x] **SEND-01**: Sends email via Resend API using credentials from .env
+- [x] **SEND-02**: Inspects Resend response object for named error types (429 rate limit, daily_quota_exceeded, invalid_email) — not just HTTP status code
 - [ ] **SEND-03**: Configurable delay between sends (default: 2s; configurable via profile.toml or --delay CLI flag)
 - [ ] **SEND-04**: --dry-run flag causes the tool to scrape and generate messages but never call the Resend API
 
 ### Logging
 
-- [ ] **LOG-01**: Append-only CSV log is written immediately after each company attempt (before moving to next row)
-- [ ] **LOG-02**: Log captures: url, company_name, email_found, generated_message, status, resend_message_id, timestamp
+- [x] **LOG-01**: Append-only CSV log is written immediately after each company attempt (before moving to next row)
+- [x] **LOG-02**: Log captures: url, company_name, email_found, generated_message, status, resend_message_id, timestamp
 - [ ] **LOG-03**: On re-run, URLs where status=sent in the existing log are skipped (idempotent re-runs)
 
 ## v2 Requirements
@@ -82,12 +82,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | GEN-02 | Phase 4 | Complete |
 | GEN-03 | Phase 4 | Complete |
 | GEN-04 | Phase 4 | Complete |
-| SEND-01 | Phase 5 | Pending |
-| SEND-02 | Phase 5 | Pending |
+| SEND-01 | Phase 5 | Complete |
+| SEND-02 | Phase 5 | Complete |
 | SEND-03 | Phase 5 | Pending |
 | SEND-04 | Phase 6 | Pending |
-| LOG-01 | Phase 5 | Pending |
-| LOG-02 | Phase 5 | Pending |
+| LOG-01 | Phase 5 | Complete |
+| LOG-02 | Phase 5 | Complete |
 | LOG-03 | Phase 6 | Pending |
 
 **Coverage:**
