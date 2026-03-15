@@ -63,7 +63,12 @@ Plans:
   3. Given a URL with no email on homepage or `/contact` but one on `/about`, the scraper returns the `/about` email
   4. Given a URL with no discoverable email on any of the three pages, the scraper logs status `no_email_found` and the run continues to the next company without stopping
   5. Company name is inferred from the domain slug (e.g. `stripe.com` → "Stripe") and stored on the record
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Wave 0 scaffolding: Status.SCRAPE_FAILED enum value, test_models.py update, test_scraper.py failing stubs, pytest-httpx install
+- [ ] 03-02-PLAN.md — scraper.py implementation: scrape_company() with three-page fallback, email priority scoring, company name inference
+- [ ] 03-03-PLAN.md — CLI integration: CSV reading loop in __main__.py, test_cli.py scraper integration test
 
 ### Phase 4: LLM Generation
 **Goal**: Given a company record and developer profile, the tool produces a personalized, send-ready email intro that passes validation — or skips the company with a clear status if it cannot
@@ -107,7 +112,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Scaffolding | 3/3 | Complete   | 2026-03-14 |
 | 2. Data Model and Config | 4/4 | Complete   | 2026-03-14 |
-| 3. Web Scraping | 0/TBD | Not started | - |
+| 3. Web Scraping | 0/3 | Not started | - |
 | 4. LLM Generation | 0/TBD | Not started | - |
 | 5. Sending and Logging | 0/TBD | Not started | - |
 | 6. Orchestration and CLI | 0/TBD | Not started | - |
