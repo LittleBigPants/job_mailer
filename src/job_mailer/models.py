@@ -17,6 +17,7 @@ class Status(str, enum.Enum):
     RATE_LIMITED = "rate_limited"
     SKIPPED = "skipped"
     SCRAPE_FAILED = "scrape_failed"
+    DRY_RUN = "dry_run"
 
 
 @dataclass

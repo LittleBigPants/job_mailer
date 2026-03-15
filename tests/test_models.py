@@ -57,6 +57,7 @@ def test_status_enum_values():
         "rate_limited",
         "skipped",
         "scrape_failed",
+        "dry_run",
     }
     actual_values = {member.value for member in Status}
     assert actual_values == expected_values
