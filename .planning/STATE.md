@@ -6,14 +6,14 @@ current_phase: 1
 current_phase_name: Scaffolding
 current_plan: 3
 status: executing
-stopped_at: Completed 03-web-scraping 03-01-PLAN.md
-last_updated: "2026-03-15T01:33:19.683Z"
+stopped_at: Completed 03-web-scraping 03-02-PLAN.md
+last_updated: "2026-03-15T01:38:07.692Z"
 last_activity: 2026-03-15
 progress:
   total_phases: 6
   completed_phases: 2
   total_plans: 10
-  completed_plans: 8
+  completed_plans: 9
   percent: 0
 ---
 
@@ -64,6 +64,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 02-data-model-and-config P03 | 1min | 1 tasks | 1 files |
 | Phase 02-data-model-and-config P04 | 2min | 1 tasks | 1 files |
 | Phase 03-web-scraping P01 | 2min | 2 tasks | 5 files |
+| Phase 03-web-scraping P02 | 3min | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -96,6 +97,9 @@ Recent decisions affecting current work:
 - [Phase 02-data-model-and-config]: No CSV reading or pipeline logic in __main__.py — clean stub boundary for Phase 3+
 - [Phase 03-web-scraping]: pytest-httpx used for HTTP mocking in scraper tests — integrates natively with httpx via fixture injection
 - [Phase 03-web-scraping]: RED-only Wave 0: scraper tests written before production code; Plan 02 implements against these nine test stubs
+- [Phase 03-web-scraping]: Break fallback loop when all candidates are score-2 (never-return) — tests confirm no further pages should be requested when noreply@ is the only find
+- [Phase 03-web-scraping]: urljoin(scheme://netloc, path) not urljoin(original_url, path) — ensures /contact and /about always resolve to root-relative paths
+- [Phase 03-web-scraping]: Catch only httpx.TimeoutException and httpx.RequestError, never raise_for_status() — non-200 response is 'skip page' not an error
 
 ### Pending Todos
 
@@ -108,6 +112,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-15T01:33:19.681Z
-Stopped at: Completed 03-web-scraping 03-01-PLAN.md
+Last session: 2026-03-15T01:38:07.691Z
+Stopped at: Completed 03-web-scraping 03-02-PLAN.md
 Resume file: None
