@@ -144,7 +144,7 @@ def test_cli_calls_generate_email_after_scrape(tmp_path, monkeypatch):
 
 
 def test_send_delay_called(tmp_path, monkeypatch):
-    """CLI reads delay from profile['send']['delay_seconds'] and calls time.sleep once per row."""
+    """--delay 3 CLI flag takes priority over profile (no delay_seconds); time.sleep called with 3."""
     from job_mailer.models import CompanyRecord, Status
 
     csv_file = tmp_path / "companies.csv"
@@ -173,6 +173,7 @@ def test_send_delay_called(tmp_path, monkeypatch):
     monkeypatch.setenv("RESEND_API_KEY", "test_key")
     monkeypatch.setenv("RESEND_FROM_EMAIL", "from@test.com")
     monkeypatch.setenv("GROQ_API_KEY", "test_groq")
+    monkeypatch.chdir(tmp_path)
 
     with (
         patch("job_mailer.__main__.scrape_company", return_value=mock_record_scraped),
@@ -180,13 +181,13 @@ def test_send_delay_called(tmp_path, monkeypatch):
         patch("job_mailer.__main__.send_email", return_value=mock_record_sent),
         patch("job_mailer.__main__.log_record"),
         patch("job_mailer.__main__.time") as mock_time,
-        patch("job_mailer.__main__.load_profile", return_value={"send": {"delay_seconds": 3}}),
+        patch("job_mailer.__main__.load_profile", return_value={"developer": {"name": "Test Dev"}}),
         patch("job_mailer.__main__.validate_profile"),
     ):
         from typer.testing import CliRunner
         from job_mailer.__main__ import app
         runner_local = CliRunner()
-        result = runner_local.invoke(app, ["--input", str(csv_file)])
+        result = runner_local.invoke(app, ["--input", str(csv_file), "--delay", "3"])
 
     assert result.exit_code == 0
     mock_time.sleep.assert_called_once_with(3)
