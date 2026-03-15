@@ -20,3 +20,9 @@ specialisation = "backend APIs and data pipelines"  # string — one-line summar
 
 [send]
 delay_seconds = 2   # integer — seconds between sends (minimum 1; default 2)
+
+[generation]
+# Groq model to use for email generation.
+# See https://console.groq.com/docs/models for available models.
+# Omit this section to use the default: llama-3.3-70b-versatile
+model = "llama-3.3-70b-versatile"
