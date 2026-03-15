@@ -14,6 +14,7 @@ class Status(str, enum.Enum):
     NO_EMAIL_FOUND = "no_email_found"
     GENERATION_FAILED = "generation_failed"
     SEND_FAILED = "send_failed"
+    RATE_LIMITED = "rate_limited"
     SKIPPED = "skipped"
     SCRAPE_FAILED = "scrape_failed"
 
