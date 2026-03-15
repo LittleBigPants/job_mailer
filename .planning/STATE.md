@@ -6,14 +6,14 @@ current_phase: 1
 current_phase_name: Scaffolding
 current_plan: 3
 status: executing
-stopped_at: Completed 03-web-scraping 03-02-PLAN.md
-last_updated: "2026-03-15T01:38:07.692Z"
+stopped_at: Completed 03-web-scraping 03-03-PLAN.md
+last_updated: "2026-03-15T01:41:12.020Z"
 last_activity: 2026-03-15
 progress:
   total_phases: 6
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 10
-  completed_plans: 9
+  completed_plans: 10
   percent: 0
 ---
 
@@ -65,6 +65,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 02-data-model-and-config P04 | 2min | 1 tasks | 1 files |
 | Phase 03-web-scraping P01 | 2min | 2 tasks | 5 files |
 | Phase 03-web-scraping P02 | 3min | 1 tasks | 1 files |
+| Phase 03-web-scraping P03 | 8min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -100,6 +101,9 @@ Recent decisions affecting current work:
 - [Phase 03-web-scraping]: Break fallback loop when all candidates are score-2 (never-return) — tests confirm no further pages should be requested when noreply@ is the only find
 - [Phase 03-web-scraping]: urljoin(scheme://netloc, path) not urljoin(original_url, path) — ensures /contact and /about always resolve to root-relative paths
 - [Phase 03-web-scraping]: Catch only httpx.TimeoutException and httpx.RequestError, never raise_for_status() — non-200 response is 'skip page' not an error
+- [Phase 03-web-scraping]: scrape_company imported at module level in __main__.py — enables clean patching via job_mailer.__main__.scrape_company in tests
+- [Phase 03-web-scraping]: Per-row exception catch with typer.echo err=True — failure on one URL does not abort the full batch
+- [Phase 03-web-scraping]: Header row skipped by exact string match url (case-insensitive) — simple and sufficient for single-column CSV format
 
 ### Pending Todos
 
@@ -112,6 +116,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-15T01:38:07.691Z
-Stopped at: Completed 03-web-scraping 03-02-PLAN.md
+Last session: 2026-03-15T01:41:12.018Z
+Stopped at: Completed 03-web-scraping 03-03-PLAN.md
 Resume file: None

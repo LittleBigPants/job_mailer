@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Scaffolding** - Secure project skeleton with secrets management, DNS auth docs, and developer profile schema (completed 2026-03-14)
 - [x] **Phase 2: Data Model and Config** - CompanyRecord dataclass, ProfileConfig loader, and stub CLI that validates config on startup (completed 2026-03-14)
-- [ ] **Phase 3: Web Scraping** - Email discovery via footer/contact/about fallback chain with company name inference
+- [x] **Phase 3: Web Scraping** - Email discovery via footer/contact/about fallback chain with company name inference (completed 2026-03-15)
 - [ ] **Phase 4: LLM Generation** - Groq-powered personalized email generation with post-generation validation
 - [ ] **Phase 5: Sending and Logging** - Resend email delivery with error inspection and append-only per-company CSV log
 - [ ] **Phase 6: Orchestration and CLI** - Full pipeline wired end-to-end with dry-run, idempotency, send delay, and Typer CLI
@@ -112,7 +112,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Scaffolding | 3/3 | Complete   | 2026-03-14 |
 | 2. Data Model and Config | 4/4 | Complete   | 2026-03-14 |
-| 3. Web Scraping | 2/3 | In Progress|  |
+| 3. Web Scraping | 3/3 | Complete   | 2026-03-15 |
 | 4. LLM Generation | 0/TBD | Not started | - |
 | 5. Sending and Logging | 0/TBD | Not started | - |
 | 6. Orchestration and CLI | 0/TBD | Not started | - |
