@@ -6,14 +6,14 @@ current_phase: 1
 current_phase_name: Scaffolding
 current_plan: 3
 status: executing
-stopped_at: Completed 06-orchestration-and-cli-01-PLAN.md
-last_updated: "2026-03-15T20:38:11.285Z"
+stopped_at: Completed 06-orchestration-and-cli-02-PLAN.md
+last_updated: "2026-03-15T20:41:28.861Z"
 last_activity: 2026-03-15
 progress:
   total_phases: 6
-  completed_phases: 5
+  completed_phases: 6
   total_plans: 18
-  completed_plans: 17
+  completed_plans: 18
   percent: 0
 ---
 
@@ -73,6 +73,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 05-sending-and-logging P02 | 2min | 2 tasks | 2 files |
 | Phase 05-sending-and-logging P03 | 3min | 2 tasks | 2 files |
 | Phase 06-orchestration-and-cli P01 | 3min | 2 tasks | 3 files |
+| Phase 06-orchestration-and-cli P02 | 1min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -127,6 +128,10 @@ Recent decisions affecting current work:
 - [Phase 06-orchestration-and-cli]: Status.DRY_RUN inserted after SCRAPE_FAILED to maintain logical grouping of enum values
 - [Phase 06-orchestration-and-cli]: monkeypatch.chdir(tmp_path) pattern used for all idempotency tests — prevents outreach_log.csv littering repo root
 - [Phase 06-orchestration-and-cli]: Idempotency tests assert both send_email and log_record not called — no new row written for already-sent URL
+- [Phase 06-orchestration-and-cli]: dry-run branch replaces send_email() entirely — set before the send call, not after
+- [Phase 06-orchestration-and-cli]: delay is not None check (not if delay) ensures 0 is a valid delay override
+- [Phase 06-orchestration-and-cli]: Idempotency log read once before loop — no repeated I/O per row; load-once pattern
+- [Phase 06-orchestration-and-cli]: test_send_delay_called updated to pass --delay 3 CLI flag; profile omits delay_seconds to validate priority chain
 
 ### Pending Todos
 
@@ -139,6 +144,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-15T20:38:11.283Z
-Stopped at: Completed 06-orchestration-and-cli-01-PLAN.md
+Last session: 2026-03-15T20:41:28.859Z
+Stopped at: Completed 06-orchestration-and-cli-02-PLAN.md
 Resume file: None

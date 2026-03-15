@@ -18,7 +18,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Web Scraping** - Email discovery via footer/contact/about fallback chain with company name inference (completed 2026-03-15)
 - [ ] **Phase 4: LLM Generation** - Groq-powered personalized email generation with post-generation validation
 - [x] **Phase 5: Sending and Logging** - Resend email delivery with error inspection and append-only per-company CSV log (completed 2026-03-15)
-- [ ] **Phase 6: Orchestration and CLI** - Full pipeline wired end-to-end with dry-run, idempotency, send delay, and Typer CLI
+- [x] **Phase 6: Orchestration and CLI** - Full pipeline wired end-to-end with dry-run, idempotency, send delay, and Typer CLI (completed 2026-03-15)
 
 ## Phase Details
 
@@ -148,4 +148,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 3. Web Scraping          | 3/3            | Complete    | 2026-03-15 |
 | 4. LLM Generation        | 2/3            | In Progress |            |
 | 5. Sending and Logging   | 3/3            | Complete    | 2026-03-15 |
-| 6. Orchestration and CLI | 1/2 | In Progress|  |
+| 6. Orchestration and CLI | 2/2 | Complete   | 2026-03-15 |
