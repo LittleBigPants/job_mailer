@@ -136,3 +136,57 @@ def test_cli_calls_generate_email_after_scrape(tmp_path, monkeypatch):
     # First positional arg to generate_email should be the CompanyRecord
     call_args = mock_gen.call_args
     assert call_args[0][0] is scrape_record
+
+
+# ---------------------------------------------------------------------------
+# Phase 5: send delay integration test
+# ---------------------------------------------------------------------------
+
+
+def test_send_delay_called(tmp_path, monkeypatch):
+    """CLI reads delay from profile['send']['delay_seconds'] and calls time.sleep once per row."""
+    from job_mailer.models import CompanyRecord, Status
+
+    csv_file = tmp_path / "companies.csv"
+    csv_file.write_text("url\nhttps://example.com\n")
+
+    mock_record_scraped = CompanyRecord(
+        url="https://example.com",
+        company_name="Example",
+        email_found="ceo@example.com",
+    )
+    mock_record_generated = CompanyRecord(
+        url="https://example.com",
+        company_name="Example",
+        email_found="ceo@example.com",
+        generated_message="Hello, I am reaching out.",
+    )
+    mock_record_sent = CompanyRecord(
+        url="https://example.com",
+        company_name="Example",
+        email_found="ceo@example.com",
+        generated_message="Hello, I am reaching out.",
+        status=Status.SENT,
+        resend_message_id="re_abc",
+    )
+
+    monkeypatch.setenv("RESEND_API_KEY", "test_key")
+    monkeypatch.setenv("RESEND_FROM_EMAIL", "from@test.com")
+    monkeypatch.setenv("GROQ_API_KEY", "test_groq")
+
+    with (
+        patch("job_mailer.__main__.scrape_company", return_value=mock_record_scraped),
+        patch("job_mailer.__main__.generate_email", return_value=mock_record_generated),
+        patch("job_mailer.__main__.send_email", return_value=mock_record_sent),
+        patch("job_mailer.__main__.log_record"),
+        patch("job_mailer.__main__.time") as mock_time,
+        patch("job_mailer.__main__.load_profile", return_value={"send": {"delay_seconds": 3}}),
+        patch("job_mailer.__main__.validate_profile"),
+    ):
+        from typer.testing import CliRunner
+        from job_mailer.__main__ import app
+        runner_local = CliRunner()
+        result = runner_local.invoke(app, ["--input", str(csv_file)])
+
+    assert result.exit_code == 0
+    mock_time.sleep.assert_called_once_with(3)
