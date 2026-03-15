@@ -24,10 +24,10 @@
 
 ### Generation
 
-- [ ] **GEN-01**: Tool infers company name and industry from the domain URL and passes both to the LLM
-- [ ] **GEN-02**: Groq LLM generates a personalized email intro (target: 60–180 words) using developer profile loaded from profile.toml
-- [ ] **GEN-03**: Generated message is validated before send — rejected and retried once if: outside 60–180 words, contains [bracket] placeholders, or matches cliché deny-list ("I hope this finds you", "quick question", "synergy", "touch base", "circle back")
-- [ ] **GEN-04**: If validation fails after one retry, company is logged as 'generation_failed' and skipped
+- [x] **GEN-01**: Tool infers company name and industry from the domain URL and passes both to the LLM
+- [x] **GEN-02**: Groq LLM generates a personalized email intro (target: 60–180 words) using developer profile loaded from profile.toml
+- [x] **GEN-03**: Generated message is validated before send — rejected and retried once if: outside 60–180 words, contains [bracket] placeholders, or matches cliché deny-list ("I hope this finds you", "quick question", "synergy", "touch base", "circle back")
+- [x] **GEN-04**: If validation fails after one retry, company is logged as 'generation_failed' and skipped
 
 ### Sending
 
@@ -78,10 +78,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DISC-02 | Phase 3 | Complete |
 | DISC-03 | Phase 3 | Complete |
 | DISC-04 | Phase 3 | Complete |
-| GEN-01 | Phase 4 | Pending |
-| GEN-02 | Phase 4 | Pending |
-| GEN-03 | Phase 4 | Pending |
-| GEN-04 | Phase 4 | Pending |
+| GEN-01 | Phase 4 | Complete |
+| GEN-02 | Phase 4 | Complete |
+| GEN-03 | Phase 4 | Complete |
+| GEN-04 | Phase 4 | Complete |
 | SEND-01 | Phase 5 | Pending |
 | SEND-02 | Phase 5 | Pending |
 | SEND-03 | Phase 5 | Pending |
