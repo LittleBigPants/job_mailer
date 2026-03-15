@@ -95,7 +95,12 @@ Plans:
   2. A Resend 429 rate-limit response is detected from the response object's error field (not HTTP status code) and results in a log row with status `rate_limited`, not `sent`
   3. A `daily_quota_exceeded` error from Resend produces a clear terminal message and graceful exit, not a traceback
   4. Send delay between emails defaults to 2 seconds and is configurable via `profile.toml` or `--delay` CLI flag
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 05-01-PLAN.md — Wave 0 TDD scaffold: Status.RATE_LIMITED enum value, test_sender.py and test_logger.py failing stubs
+- [ ] 05-02-PLAN.md — sender.py and logger.py implementation: send_email() and log_record() to GREEN
+- [ ] 05-03-PLAN.md — CLI integration: wire send+log into __main__.py with delay and run summary
 
 ### Phase 6: Orchestration and CLI
 **Goal**: A single CLI command reads a CSV of company URLs and drives the full pipeline end-to-end — with dry-run safety, skip-already-sent idempotency, and per-row error isolation
@@ -119,5 +124,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 2. Data Model and Config | 4/4 | Complete   | 2026-03-14 |
 | 3. Web Scraping | 3/3 | Complete   | 2026-03-15 |
 | 4. LLM Generation | 2/3 | In Progress|  |
-| 5. Sending and Logging | 0/TBD | Not started | - |
+| 5. Sending and Logging | 0/3 | Not started | - |
 | 6. Orchestration and CLI | 0/TBD | Not started | - |
